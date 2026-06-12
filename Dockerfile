@@ -7,6 +7,5 @@ RUN apk add --no-cache \
     && pip3 install --break-system-packages yt-dlp \
     && npm install -g n8n
 
-USER node
 EXPOSE 5678
 CMD ["n8n", "start"]
