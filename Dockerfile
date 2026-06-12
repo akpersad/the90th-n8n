@@ -1,11 +1,12 @@
-FROM n8nio/n8n:latest
+FROM node:20-alpine
 
-USER root
-
-RUN apt-get update && apt-get install -y \
+RUN apk add --no-cache \
     ffmpeg \
     python3 \
-    python3-pip \
-    && pip3 install --break-system-packages yt-dlp
+    py3-pip \
+    && pip3 install --break-system-packages yt-dlp \
+    && npm install -g n8n
 
 USER node
+EXPOSE 5678
+CMD ["n8n", "start"]
